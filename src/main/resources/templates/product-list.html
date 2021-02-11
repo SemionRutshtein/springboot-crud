@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+</head>
+<body>
+<div th:switch="${products}">
+    <h2 th:case="null">No products found!</h2>
+    <div th:case="*">
+        <h2>Products</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.productId}"></td>
+                <td th:text="${product.productName}"></td>
+                <td><a th:href="@{product-update/{productId}(productId=${product.productId})}">Edit</a></td>
+                <td><a th:href="@{product-delete/{productId}(productId=${product.productId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/product-create">Create product</a></p>
+</div>
+</body>
+</html>

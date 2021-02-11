@@ -18,13 +18,16 @@ public class UserService {
     }
 
     public User findById(Long id) {
+
         //we can do this one like that
         //return userRepository.findById(id).orElse(null);
+
         return userRepository.getOne(id);
     }
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
     public User saveUser(User user) {
         return userRepository.save(user);
     }
